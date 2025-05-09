@@ -9,7 +9,7 @@ const { log } = require("node:console");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { insertRecipe } = require("./model/recipe");
+const { insertRecipe, getAllRecipes } = require("./model/recipe");
 
 // Basic route
 const path = require("path");
@@ -30,6 +30,13 @@ app.post("/post", async (req, res) => {
     console.error("Fejl ved oprettelse:", err.message);
     res.status(500).send("Noget gik galt ved oprettelsen.");
   }
+});
+
+app.get("/data", async (req, res) => {
+  console.log("Database");
+
+  let data = await getAllRecipes();
+  res.send(data);
 });
 
 // Start the server

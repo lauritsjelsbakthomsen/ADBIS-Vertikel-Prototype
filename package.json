@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "express": "^5.1.0",
+    "prettyjson": "^1.2.5",
     "sqlite3": "^5.1.7"
   }
 }

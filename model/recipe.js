@@ -81,8 +81,26 @@ function dropRecipeTable() {
   });
 }
 
+function getAllRecipes() {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT * FROM recipe`;
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        console.log("❌ Failed to retrieve recipes:", err.message);
+        reject(err);
+      } else {
+        console.log(`✅ Retrieved ${rows.length} recipes`);
+        resolve(rows);
+        console.log(rows);
+      }
+    });
+  });
+}
+
+//getAllRecipes();
+
 //dropRecipeTable();
 
 //insertRecipe("vand", "hej igen");
 
-module.exports = { db, insertRecipe, deleteRecipe };
+module.exports = { db, insertRecipe, deleteRecipe, getAllRecipes };
