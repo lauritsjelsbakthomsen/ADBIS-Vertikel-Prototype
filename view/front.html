@@ -16,15 +16,36 @@
       width: 30%;
       padding: 0.5rem;
       margin-top: 0.3rem;
+      
     }
     button {
       margin-top: 1rem;
       padding: 0.5rem 1rem;
     }
+
+    .button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;  /* Bootstrap blue */
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button-link:hover {
+  background-color: #0056b3;
+}
   </style>
 </head>
 <body>
-  <h1>Create a New Recipe</h1>
+  <h1>Opret ny opskrift</h1>
+
+  <div>
+
+  
 
   <form action="/post" method="POST">
     <label for="name"> Opskrift navn</label>
@@ -38,7 +59,11 @@
 
     <br>
 
-    <button type="submit">Submit Recipe</button>
+    <button type="submit">Opret</button>
   </form>
-</body>
+</div>
+
+<br>
+
+<a href="/db" class="button-link">Database</a></body>
 </html>

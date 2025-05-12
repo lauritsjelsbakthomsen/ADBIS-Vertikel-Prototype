@@ -14,6 +14,8 @@ const { insertRecipe, getAllRecipes } = require("./model/recipe");
 // Basic route
 const path = require("path");
 
+app.use(express.static("view"));
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "view", "front.html"));
 });
@@ -33,10 +35,18 @@ app.post("/post", async (req, res) => {
 });
 
 app.get("/data", async (req, res) => {
-  console.log("Database");
+  try {
+    let data = await getAllRecipes();
+    res.json(data); // ensures it's JSON format
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
-  let data = await getAllRecipes();
-  res.send(data);
+app.get("/db", (req, res) => {
+  console.log("Viser DB fil");
+
+  res.sendFile(path.join(__dirname, "/view/db.html"));
 });
 
 // Start the server
