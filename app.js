@@ -27,10 +27,9 @@ app.post("/post", async (req, res) => {
   try {
     await insertRecipe(req.body.name, req.body.ingredients, req.body.metode);
 
-    res.send("Opskriften er oprettet!");
+    res.status(500).sendFile(path.join(__dirname, "view", "front.html"));
   } catch (err) {
     console.error("Fejl ved oprettelse:", err.message);
-    res.status(500).send("Noget gik galt ved oprettelsen.");
   }
 });
 
