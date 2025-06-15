@@ -1,6 +1,6 @@
 // fetch fra endpoint
 
-// lav tabel over data
+// henter data ned fra DB med /data fra app.js
 
 async function getData(url) {
   try {
@@ -19,6 +19,7 @@ async function getData(url) {
   }
 }
 
+//laver tabel på HTML side med recipes
 async function makeTable() {
   let table = document.getElementById("table");
 

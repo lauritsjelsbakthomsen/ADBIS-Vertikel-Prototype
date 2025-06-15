@@ -13,8 +13,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 });
 
-// Create table if it doesn't exist
-// Opret bruger-tabellen
+// Create table for the recipes if it doesn't exist
 function createRecipeTable() {
   const sql = `CREATE TABLE recipe (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +30,7 @@ function createRecipeTable() {
   });
 }
 
-//createRecipeTable();
+//indsætter recipe i det skabte table fra ovenstående funktion;
 
 function insertRecipe(name, ingredients, metode) {
   return new Promise((resolve, reject) => {
@@ -65,6 +64,7 @@ function deleteRecipe(id) {
   });
 }
 
+//drop recipleTable sletter alle recipes
 function dropRecipeTable() {
   return new Promise((resolve, reject) => {
     const sql = `DROP TABLE IF EXISTS recipe`;
@@ -81,6 +81,7 @@ function dropRecipeTable() {
   });
 }
 
+//bruges til at hente alle recipes
 function getAllRecipes() {
   return new Promise((resolve, reject) => {
     const sql = `SELECT * FROM recipe`;

@@ -16,10 +16,12 @@ const path = require("path");
 
 app.use(express.static("view"));
 
+//bruges til at vise ting i HTML-siden front
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "view", "front.html"));
 });
 
+//bruges til at lave opskriver i DB fra HTML
 app.post("/post", async (req, res) => {
   console.log("Ny opskrift lavet");
   console.log(req.body);
@@ -33,6 +35,7 @@ app.post("/post", async (req, res) => {
   }
 });
 
+//bruges til at hente alle recipes ned
 app.get("/data", async (req, res) => {
   try {
     let data = await getAllRecipes();
@@ -42,13 +45,14 @@ app.get("/data", async (req, res) => {
   }
 });
 
+//henter DB fil ned og viser det på HTML
 app.get("/db", (req, res) => {
   console.log("Viser DB fil");
 
   res.sendFile(path.join(__dirname, "/view/db.html"));
 });
 
-// Start the server
+// Start the server at localhost
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
